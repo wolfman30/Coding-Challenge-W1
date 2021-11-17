@@ -24,6 +24,9 @@ public class CodingChallenge
 
         for (int i = 0; i < length / 2; i++)
         {
+            int midIndex = length / 2;
+            str.substring(0, i++); 
+            str.substring(midIndex, length - 1);
             StringBuilder newString = stringBuilder;
         }
 
