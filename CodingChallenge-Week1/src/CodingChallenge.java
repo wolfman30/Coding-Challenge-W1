@@ -4,36 +4,42 @@ public class CodingChallenge
 {
     /**
      * Part 1 of the coding challenge for staging
-     * @param str   the input string that is checked for ascending consecutive numbers
-     * @return  true or false as to whether the string has only ascending consecutive numbers without spaces
+     * @param stringToCheck   the string that is checked for ascending consecutive numbers
+     * @return  boolean stringToCheck does or does not have only ascending consecutive numbers without spaces
      */
-    public static boolean isAscending(String str)
+    public static boolean isAscending(String stringToCheck)
     {
-//        char[] chars = str.toCharArray();
-//        StringBuilder stringBuilder = new StringBuilder();
-//
-//        for (char character: chars)
-//        {
-//            if (Character.isDigit(character))
-//            {
-//                stringBuilder.append(character);
-//            }
-//        }
-//        if (stringBuilder.length() != str.length())
-//        {
-//            return false;
-//        }
 
-        int start;
-        int length = str.length();
+        /*
+        *  this just checks if the string contains any spaces
+        *  or any non-digit characters
+        */
+        char[] chars = stringToCheck.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (char character: chars)
+        {
+            if (Character.isDigit(character))
+            {
+                stringBuilder.append(character);
+            }
+        }
+        if (stringBuilder.length() != stringToCheck.length())
+        {
+            return false;
+        }
+
+        /*
+        *  this checks if the original string has a sequence of
+        *  increasing consecutive numbers
+        */
+        int length = stringToCheck.length();
 
         for (int i = 0; i < length / 2; i++)
         {
-            String newString = str.substring(0, i + 1);
+            String newString = stringToCheck.substring(0, i + 1);
 
             int number = Integer.parseInt(newString);
-
-            start = number;
 
             while (newString.length() < length)
             {
@@ -42,7 +48,7 @@ public class CodingChallenge
                 newString += String.valueOf(number);
             }
 
-            if (newString.equals(str))
+            if (newString.equals(stringToCheck))
                 return true;
         }
 
@@ -82,9 +88,10 @@ public class CodingChallenge
 
     public static void main(String[] args)
     {
-        System.out.println(isAscending("232425"));
-        System.out.println(isAscending("232 425")); //should be false
+        System.out.println("'232425' should be true: " + isAscending("232425"));
+        System.out.println("'232 425' should be false " + isAscending("232 425")); //should be false
         System.out.println("Result from 123456789 is " + isAscending("123456789"));
+        System.out.println("Result of 199200 should be true: " + isAscending("199200"));
         printNsquare(4);
         printNsquare(6);
         printNsquare(10);
