@@ -2,35 +2,51 @@ import java.util.Arrays;
 
 public class CodingChallenge
 {
+    /**
+     * Part 1 of the coding challenge for staging
+     * @param str   the input string that is checked for ascending consecutive numbers
+     * @return  true or false as to whether the string has only ascending consecutive numbers without spaces
+     */
     public static boolean isAscending(String str)
     {
-        char[] chars = str.toCharArray();
-        StringBuilder stringBuilder = new StringBuilder();
+//        char[] chars = str.toCharArray();
+//        StringBuilder stringBuilder = new StringBuilder();
+//
+//        for (char character: chars)
+//        {
+//            if (Character.isDigit(character))
+//            {
+//                stringBuilder.append(character);
+//            }
+//        }
+//        if (stringBuilder.length() != str.length())
+//        {
+//            return false;
+//        }
 
         int start;
         int length = str.length();
 
-        for (char character: chars)
-        {
-            if (Character.isDigit(character))
-            {
-                stringBuilder.append(character);
-            }
-        }
-        if (stringBuilder.length() != str.length())
-        {
-            return false;
-        }
-
         for (int i = 0; i < length / 2; i++)
         {
-            int midIndex = length / 2;
-            str.substring(0, i++); 
-            str.substring(midIndex, length - 1);
-            StringBuilder newString = stringBuilder;
+            String newString = str.substring(0, i + 1);
+
+            int number = Integer.parseInt(newString);
+
+            start = number;
+
+            while (newString.length() < length)
+            {
+                number++;
+
+                newString += String.valueOf(number);
+            }
+
+            if (newString.equals(str))
+                return true;
         }
 
-        return true;
+        return false;
     }
 
     /**
@@ -68,6 +84,7 @@ public class CodingChallenge
     {
         System.out.println(isAscending("232425"));
         System.out.println(isAscending("232 425")); //should be false
+        System.out.println("Result from 123456789 is " + isAscending("123456789"));
         printNsquare(4);
         printNsquare(6);
         printNsquare(10);
