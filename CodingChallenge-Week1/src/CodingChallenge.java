@@ -33,11 +33,11 @@ public class CodingChallenge
         *  this checks if the original string has a sequence of
         *  increasing consecutive numbers
         */
-        int length = stringToCheck.length();
+        int length = stringBuilder.length();
 
         for (int i = 0; i < length / 2; i++)
         {
-            String newString = stringToCheck.substring(0, i + 1);
+            String newString = stringBuilder.substring(0, i + 1);
 
             int number = Integer.parseInt(newString);
 
@@ -89,7 +89,7 @@ public class CodingChallenge
     public static void main(String[] args)
     {
         System.out.println("'232425' should be true: " + isAscending("232425"));
-        System.out.println("'232 425' should be false " + isAscending("232 425")); //should be false
+        System.out.println("'232 425' should be false: " + isAscending("232 425")); //should be false
         System.out.println("Result from 123456789 is " + isAscending("123456789"));
         System.out.println("Result of 199200 should be true: " + isAscending("199200"));
         printNsquare(4);
